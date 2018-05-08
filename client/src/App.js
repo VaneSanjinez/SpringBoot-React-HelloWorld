@@ -20,9 +20,9 @@ class App extends Component {
       .then(response => {message: response})
       .then(data => this.setState({ message: data }));
       //.then(response => response.json())
-      //.then(data => this.setState({ people: data.people }));
+      //.then(data => this.setState({ people: data.people }));*/
       
-    componentDidMount() {
+  componentDidMount() {
     /*axios.get(API)
       .then(res => {
         const persons = res.data;
