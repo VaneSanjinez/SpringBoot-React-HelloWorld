@@ -41,3 +41,6 @@ server/nbbuild/
 server/dist/
 server/nbdist/
 server/.nb-gradle/
+
+#root
+npm-debug.log
