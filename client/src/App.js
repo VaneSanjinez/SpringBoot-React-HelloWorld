@@ -1,66 +1,62 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 const API = 'http://localhost:9000/home/hello';
+//const API = 'http://localhost:9000/people/all';
 
 class App extends Component {
-   constructor(props){
-       super(props);
+    constructor(props) {
+    super(props);
 
-       this.state ={
-        message: '',
-      };
+    //this.state = {
+    //  persons: [],
+    //};
+    this.state = {
+      message : '',
+    }
    }
-   componentDidMount() {
-    fetch(API)
-      /*.then(response => {message: response})
-      .then(data => this.setState({ message: data }));*/
-      .then(response => {
-            this.setState({
-                message: response
-            })
-        })
-          /*fetch('/http://localhost:9000/home/hello')
-            .then(res => {
-                console.log(res);
-                //return res.json()
-             })
-            .then(message => { 
-                console.log(message); 
-                this.setState({ message })
-             });*/
-            /*.then(data)=>{
-              let message = data.res =>{
-                return (
-                  <div>
-                    message
-                  </div>
-                  )
-              })
+   //componentDidMount() {
+    /*fetch(API)
+      .then(response => {message: response})
+      .then(data => this.setState({ message: data }));
+      //.then(response => response.json())
+      //.then(data => this.setState({ people: data.people }));
+      
+    componentDidMount() {
+    /*axios.get(API)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ persons });
+      });*/
 
-            }*/
-         }
-   render() {
-        /*return (
-            <div className="App">
-                holaaa
-                {data}
-            </div>
-        );
-    }*/
+    axios.get(API)
+      .then(res => {
+        const message = res.data;
+        this.setState({message})
+      })
+  }
 
-    //const { message } = this.state;
-
+  render() {
     return (
-     <div className="App">
+      /*<div className="App">
         <div className="App-header">
           <h2>Welcome to React and Spring</h2>
         </div>
         <p>
-          Getting a message from the server :  {this.state.greetings}
+          <ul>
+              { this.state.persons.map(person => <li>{person.name}</li>)}
+          </ul>
+        </p>
+      </div>*/
+      <div className="App">
+        <div className="App-header">
+          <h2>Welcome to React and Spring</h2>
+        </div>
+        <p>
+              Getting a message from the server :  {this.state.message}
         </p>
       </div>
-    );
+    )
   }
 }
 export default App;
