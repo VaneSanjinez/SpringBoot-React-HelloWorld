@@ -4,17 +4,22 @@ import './App.css';
 const API = 'http://localhost:9000/home/hello';
 
 class App extends Component {
-   constructor(){
-       super();
+   constructor(props){
+       super(props);
 
        this.state ={
-        message: [],
+        message: '',
       };
    }
    componentDidMount() {
     fetch(API)
-      .then(response => {console.log(response)})
-      .then(data => this.setState({ message: data }));
+      /*.then(response => {message: response})
+      .then(data => this.setState({ message: data }));*/
+      .then(response => {
+            this.setState({
+                message: response
+            })
+        })
           /*fetch('/http://localhost:9000/home/hello')
             .then(res => {
                 console.log(res);
@@ -44,11 +49,16 @@ class App extends Component {
         );
     }*/
 
-    const { message } = this.state;
+    //const { message } = this.state;
 
     return (
-      <div> MESSAGE!!!!!!!
-        {String(this.state.message)}
+     <div className="App">
+        <div className="App-header">
+          <h2>Welcome to React and Spring</h2>
+        </div>
+        <p>
+          Getting a message from the server :  {this.state.greetings}
+        </p>
       </div>
     );
   }
